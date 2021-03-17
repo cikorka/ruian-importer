@@ -1,0 +1,17 @@
+---
+
+cron: 0 0 4 * * ?
+
+ruian-importer:
+    #linearize-ewkt: true
+    #convert-to-ewkt: true
+    #create-tables: false
+    #db-connection-url: jdbc:postgresql://localhost/db_name?user=username&password=passw0rd
+    #dest-srid: 4326
+    #debug: false
+    #dry-run: false
+    #ignore-invalid-gml: false
+    #log-file: null
+    #no-gis: false
+    #reset-transaction-ids: true
+    #truncate-all: true

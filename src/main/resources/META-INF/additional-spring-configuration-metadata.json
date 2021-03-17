@@ -1,0 +1,79 @@
+{
+  "properties": [
+    {
+      "name": "ruian-importer.convert-to-ewkt",
+      "type": "java.lang.Boolean",
+      "description": "If enabled, GML strings from the source XML files are first converted to EWKT and then stored in database, otherwise original GML strings are stored in database (choose this option based on Postgis level of GML implementation)."
+    },
+    {
+      "name": "ruian-importer.linearize-ewkt",
+      "type": "java.lang.Boolean",
+      "description": "If enabled, curved geometries in parsed EWKT are linearized before they are stored in database; supported only if the switch --convert-to-ewkt is enabled."
+    },
+    {
+      "name": "ruian-importer.create-tables",
+      "type": "java.lang.Boolean",
+      "description": "Creates database tables for the data (if tables with the same name already exists, it is first dropped)."
+    },
+    {
+      "name": "ruian-importer.db-connection-url",
+      "type": "java.lang.String",
+      "description": "Is JDBC connection URL, for example: jdbc:postgresql://localhost/ruian?user=ruian&password=p4ssw0rd."
+    },
+    {
+      "name": "ruian-importer.dest-srid",
+      "type": "java.lang.Integer",
+      "description": "Optional integer identifier of coordinate system to which the geometries should be transformed."
+    },
+    {
+      "name": "ruian-importer.debug",
+      "type": "java.lang.Boolean",
+      "description": "If used, debug information are output."
+    },
+    {
+      "name": "ruian-importer.dry-run",
+      "type": "java.lang.Boolean",
+      "description": "Processes all specified files but no data are written to database."
+    },
+    {
+      "name": "ruian-importer.ignore-invalid-gml",
+      "type": "java.lang.Boolean",
+      "description": "If GML definition is not valid, application ignores the definition and saves the object without the definition (if this parameter is not specified, application throws exception and exits while trying to save invalid GML definition, the drawback of this parameter is that it makes the import little bit slower because each GML definition is checked twice - once during the check and the other time during saving in database)."
+    },
+    {
+      "name": "ruian-importer.input-dir",
+      "type": "java.lang.String",
+      "description": "Is directory that contains downloaded .xml.gz files."
+    },
+    {
+      "name": "ruian-importer.log-file",
+      "type": "java.lang.String",
+      "description": "Is optional specification of log file (if not specified, log will be output to console)."
+    },
+    {
+      "name": "ruian-importer.no-gis",
+      "type": "java.lang.Boolean",
+      "description": "Ignores all GIS information (Geometrie element) in the input XML file."
+    },
+    {
+      "name": "ruian-importer.reset-transaction-ids",
+      "type": "java.lang.Boolean",
+      "description": "Resets RÚIAN transaction ids so that following data import will update all data (data are updated only if new transaction id is greater than transaction id that is stored in database - this feature is useful in case you want to regenerate your data because of some issue with previous import, without deleting all data and starting with fresh database)."
+    },
+    {
+      "name": "ruian-importer.truncate-all",
+      "type": "java.lang.Boolean",
+      "description": "Removes data from all tables."
+    },
+    {
+      "name": "ruian-importer",
+      "type": "cz.ruian.importer.config.RuianConfig",
+      "description": "Description for ruian-importer."
+    },
+    {
+      "name": "cron",
+      "type": "java.lang.String",
+      "description": "Cron for processing RÚIAN files."
+    }
+  ]
+}

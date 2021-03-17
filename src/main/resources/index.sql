@@ -1,0 +1,1 @@
+CREATE INDEX hlavicka_metadata_idx ON hlavicka (metadata);
