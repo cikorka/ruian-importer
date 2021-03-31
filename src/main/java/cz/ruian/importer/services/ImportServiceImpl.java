@@ -63,8 +63,8 @@ public class ImportServiceImpl implements ImportService {
     }
 
     @Override
-    @Scheduled(cron = "${cron}")
-    //@Scheduled(cron = "0 0 4 * * ?")
+    //@Scheduled(cron = "${cron}")
+    @Scheduled(cron = "0 0 4 * * ?")
     public void process() throws Exception {
 
         final Date date = getLastDeltaFileDate();
