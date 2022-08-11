@@ -121,18 +121,23 @@ public class VdpUtils {
         final ExecutorService executorService = Executors.newFixedThreadPool(10);
         for (final URL url : urls) {
             executorService.submit(() -> {
-                File file = new File(destination, FilenameUtils.getName(url.getPath()));
-                try {
-                    logger.info(String.format("Downloading %s to file %s", url, file));
-                    FileUtils.copyURLToFile(url, file);
-                } catch (IOException e) {
-                    logger.error("Error when downloading file.", e);
-                }
+                doDownload(destination, url);
             });
         }
         executorService.shutdown();
         while (!executorService.isTerminated()) {
             Thread.sleep(100L);
+        }
+    }
+
+    private void doDownload(File destination, URL url) {
+        File file = new File(destination, FilenameUtils.getName(url.getPath()));
+        try {
+            logger.info(String.format("Downloading %s to file %s", url, file));
+            FileUtils.copyURLToFile(url, file);
+        } catch (IOException e) {
+            logger.error("Error when downloading file.", e);
+            doDownload(destination, url);
         }
     }
 

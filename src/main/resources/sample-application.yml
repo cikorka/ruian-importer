@@ -1,7 +1,5 @@
 ---
 
-cron: 0 0 4 * * ?
-
 ruian-importer:
     #linearize-ewkt: true
     #convert-to-ewkt: true

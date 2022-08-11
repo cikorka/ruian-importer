@@ -60,9 +60,9 @@
       <artifactId>spring-boot-starter</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.github.cikorka</groupId>
+      <groupId>com.github.fordfrog</groupId>
       <artifactId>ruian2pgsql</artifactId>
-      <version>41e60855ca</version>
+      <version>0b41872</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
