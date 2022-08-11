@@ -14,4 +14,4 @@ Wrapper around [ruian2pgsql](https://github.com/fordfrog/ruian2pgsql).
 
 ### Spuštění
 
-    ruian-importer-1.0.0.jar --spring.config.location=~/application.yml
+    java -jar ruian-importer-1.0.0.jar --spring.config.location=~/application.yml
