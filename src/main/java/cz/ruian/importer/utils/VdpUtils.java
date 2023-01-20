@@ -58,24 +58,24 @@ public class VdpUtils {
     private String[] getLinkListUrls() {
         if (ruianConfig.isNoGis()) {
             return new String[]{
-                    "https://vdp.cuzk.cz/vdp/ruian/vymennyformat/seznamlinku?vf.pu=S&_vf.pu=on&_vf.pu=on&vf.cr=U&vf.up=ST&vf.ds=Z&vf.vu=Z&_vf.vu=on&_vf.vu=on&_vf.vu=on&_vf.vu=on&search=Vyhledat",
-                    "https://vdp.cuzk.cz/vdp/ruian/vymennyformat/seznamlinku?vf.pu=S&_vf.pu=on&_vf.pu=on&vf.cr=U&vf.up=OB&vf.ds=Z&vf.vu=Z&_vf.vu=on&_vf.vu=on&_vf.vu=on&_vf.vu=on&vf.uo=A&search=Vyhledat"
+                    "https://vdp.cuzk.cz/vdp/ruian/vymennyformat?crPrirustky&crKopie=true&page&casovyRozsah=U&datum&upStatAzZsj=true&upObecAPodrazene=false&uzemniPrvky=ST&dsZakladni=true&dsKompletni=false&datovaSada=Z&vyZakladni=true&vyZakladniAGenHranice=false&vyZakladniAOrigHranice=false&vyVlajkyAZnaky=false&vyber=vyZakladni&kodVusc&kodOrp&kodOb&mediaType=text",
+                    "https://vdp.cuzk.cz/vdp/ruian/vymennyformat?crPrirustky&crKopie=true&page&casovyRozsah=U&datum&upStatAzZsj=false&upObecAPodrazene=true&uzemniPrvky=OB&dsZakladni=true&dsKompletni=false&datovaSada=Z&vyZakladni=true&vyZakladniAGenHranice=false&vyZakladniAOrigHranice=false&vyVlajkyAZnaky=false&vyber=vyZakladni&kodVusc&kodOrp&kodOb&mediaType=text"
             };
 
         } else {
             return new String[]{
-                    "https://vdp.cuzk.cz/vdp/ruian/vymennyformat/seznamlinku?vf.pu=S&_vf.pu=on&_vf.pu=on&vf.cr=U&vf.up=ST&vf.ds=K&vf.vu=Z&_vf.vu=on&_vf.vu=on&vf.vu=H&_vf.vu=on&_vf.vu=on&search=Vyhledat",
-                    "https://vdp.cuzk.cz/vdp/ruian/vymennyformat/seznamlinku?vf.pu=S&_vf.pu=on&_vf.pu=on&vf.cr=U&vf.up=OB&vf.ds=K&vf.vu=Z&_vf.vu=on&_vf.vu=on&_vf.vu=on&_vf.vu=on&vf.uo=A&search=Vyhledat"
+                    "https://vdp.cuzk.cz/vdp/ruian/vymennyformat?crPrirustky&crKopie=true&page&casovyRozsah=U&datum&upStatAzZsj=true&upObecAPodrazene=false&uzemniPrvky=ST&dsZakladni=false&dsKompletni=true&datovaSada=K&vyZakladni=false&vyZakladniAGenHranice=false&vyZakladniAOrigHranice=true&vyVlajkyAZnaky=false&vyber=vyZakladniAOrigHranice&kodVusc&kodOrp&kodOb&mediaType=text",
+                    "https://vdp.cuzk.cz/vdp/ruian/vymennyformat?crPrirustky&crKopie=true&page&casovyRozsah=U&datum&upStatAzZsj=false&upObecAPodrazene=true&uzemniPrvky=OB&dsZakladni=false&dsKompletni=true&datovaSada=K&vyZakladni=false&vyZakladniAGenHranice=false&vyZakladniAOrigHranice=true&vyVlajkyAZnaky=false&vyber=vyZakladniAOrigHranice&kodVusc&kodOrp&kodOb&mediaType=text"
             };
         }
     }
 
     private String getDeltaLinkListUrls() {
         if (ruianConfig.isNoGis()) {
-            return "https://vdp.cuzk.cz/vdp/ruian/vymennyformat/seznamlinku?vf.pu=S&_vf.pu=on&_vf.pu=on&vf.cr=Z&vf.pd=%02d.%02d.%d&vf.ds=Z&vf.vu=Z&_vf.vu=on&_vf.vu=on&_vf.vu=on&_vf.vu=on&search=Vyhledat";
+            return "https://vdp.cuzk.cz/vdp/ruian/vymennyformat?crPrirustky=true&crKopie&page&casovyRozsah=Z&datum=%d-%02d-%02d&upStatAzZsj=true&upObecAPodrazene=false&uzemniPrvky=ST&dsZakladni=true&dsKompletni=false&datovaSada=Z&vyZakladni=true&vyZakladniAGenHranice=false&vyZakladniAOrigHranice=false&vyVlajkyAZnaky=false&vyber=vyZakladni&kodVusc&kodOrp&kodOb&mediaType=text";
 
         } else {
-            return "https://vdp.cuzk.cz/vdp/ruian/vymennyformat/seznamlinku?vf.pu=S&_vf.pu=on&_vf.pu=on&vf.cr=Z&vf.pd=%02d.%02d.%d&vf.ds=K&vf.vu=Z&_vf.vu=on&_vf.vu=on&vf.vu=H&_vf.vu=on&_vf.vu=on&search=Vyhledat";
+            return "https://vdp.cuzk.cz/vdp/ruian/vymennyformat?crPrirustky=true&crKopie&page&casovyRozsah=Z&datum=%d-%02d-%02d&upStatAzZsj=true&upObecAPodrazene=false&uzemniPrvky=ST&dsZakladni=false&dsKompletni=true&datovaSada=K&vyZakladni=false&vyZakladniAGenHranice=false&vyZakladniAOrigHranice=true&vyVlajkyAZnaky=false&vyber=vyZakladniAOrigHranice&kodVusc&kodOrp&kodOb&mediaType=text";
         }
     }
 
@@ -92,7 +92,7 @@ public class VdpUtils {
             for (final URL link : getLinks(linkList)) {
                 for (final String prefix : getActualFilePrefix()) {
                     //if (link.toString().contains(prefix)) {
-                        links.add(link);
+                    links.add(link);
                     //}
                 }
             }
