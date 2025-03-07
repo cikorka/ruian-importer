@@ -75,7 +75,7 @@ public class VdpUtils {
             return "https://vdp.cuzk.cz/vdp/ruian/vymennyformat?crPrirustky=true&crKopie&page&casovyRozsah=Z&datum=%d-%02d-%02d&upStatAzZsj=true&upObecAPodrazene=false&uzemniPrvky=ST&dsZakladni=true&dsKompletni=false&datovaSada=Z&vyZakladni=true&vyZakladniAGenHranice=false&vyZakladniAOrigHranice=false&vyVlajkyAZnaky=false&vyber=vyZakladni&kodVusc&kodOrp&kodOb&mediaType=text";
 
         } else {
-            return "https://vdp.cuzk.cz/vdp/ruian/vymennyformat?crPrirustky=true&crKopie&page&casovyRozsah=Z&datum=%d-%02d-%02d&upStatAzZsj=true&upObecAPodrazene=false&uzemniPrvky=ST&dsZakladni=false&dsKompletni=true&datovaSada=K&vyZakladni=false&vyZakladniAGenHranice=false&vyZakladniAOrigHranice=true&vyVlajkyAZnaky=false&vyber=vyZakladniAOrigHranice&kodVusc&kodOrp&kodOb&mediaType=text";
+            return "https://vdp.cuzk.gov.cz/vdp/ruian/vymennyformat?crPrirustky=true&crKopie&page&casovyRozsah=Z&datum=%d-%02d-%02d&upStatAzZsj=true&upObecAPodrazene=false&uzemniPrvky=ST&dsZakladni=false&dsKompletni=true&datovaSada=K&vyZakladni=false&vyZakladniAGenHranice=false&vyZakladniAOrigHranice=true&vyVlajkyAZnaky=false&vyber=vyZakladniAOrigHranice&kodVusc&kodOrp&kodOb&mediaType=text";
         }
     }
 
@@ -91,9 +91,9 @@ public class VdpUtils {
         for (final String linkList : getLinkListUrls()) {
             for (final URL link : getLinks(linkList)) {
                 for (final String prefix : getActualFilePrefix()) {
-                    //if (link.toString().contains(prefix)) {
-                    links.add(link);
-                    //}
+                    if (link.toString().contains(prefix)) {
+                        links.add(link);
+                    }
                 }
             }
         }
@@ -110,7 +110,8 @@ public class VdpUtils {
      */
     @SuppressWarnings("WeakerAccess")
     public List<URL> getLinksForProcessing(final Calendar from) throws IOException {
-        final String link = String.format(getDeltaLinkListUrls(), from.get(Calendar.DAY_OF_MONTH), from.get(Calendar.MONTH) + 1, from.get(Calendar.YEAR));
+        final String link = String.format(getDeltaLinkListUrls(), from.get(Calendar.YEAR), from.get(Calendar.MONTH) + 1, from.get(Calendar.DAY_OF_MONTH));
+        System.err.println(link);
         final List<URL> links = new ArrayList<>();
         links.addAll(getLinks(link));
         return links;
@@ -118,7 +119,7 @@ public class VdpUtils {
 
     @SuppressWarnings("WeakerAccess")
     public void download(final List<URL> urls, File destination) throws InterruptedException {
-        final ExecutorService executorService = Executors.newFixedThreadPool(10);
+        final ExecutorService executorService = Executors.newFixedThreadPool(16);
         for (final URL url : urls) {
             executorService.submit(() -> {
                 doDownload(destination, url);

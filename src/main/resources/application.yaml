@@ -1,0 +1,15 @@
+---
+
+ruian-importer:
+    linearize-ewkt: true
+    convert-to-ewkt: true
+    create-tables: false
+    db-connection-url: jdbc:postgresql://localhost/mapicka?user=mapicka&password=mapicka
+    dest-srid: 3857
+    #debug: false
+    #dry-run: false
+    ignore-invalid-gml: true
+    #log-file: null
+    #no-gis: false
+    #reset-transaction-ids: true
+    #truncate-all: true

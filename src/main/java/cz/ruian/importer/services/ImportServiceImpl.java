@@ -36,8 +36,11 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -140,8 +143,16 @@ public class ImportServiceImpl implements ImportService {
         }
     }
 
+    private void request(final String append) throws IOException {
+        URL url = URI.create("https://hc-ping.com/gxWKtxaTUoSZs1GzUrnrjQ/ruian-importer" + append).toURL();
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestProperty("accept", "application/json");
+        connection.getInputStream();
+    }
+
     private void doimport(final List<URL> urlList) throws Exception {
 
+        this.request("/start");
         //
         // Create temp dir & download files
         //
@@ -161,7 +172,9 @@ public class ImportServiceImpl implements ImportService {
         try (final Writer logFile = new OutputStreamWriter(Config.getLogFilePath() == null ? new LogOutputStream(logger) : Files.newOutputStream(Config.getLogFilePath()), "UTF-8")) {
             Log.setLogWriter(logFile);
             MainConvertor.convert();
+            this.request("");
         } catch (final IOException ex) {
+            this.request("/fail");
             throw new RuntimeException("Failed to create log writer", ex);
         } finally {
             try {
